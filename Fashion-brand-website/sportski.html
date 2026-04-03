@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html > 
+    <head>
+    <meta charset="UTF-8"> 
+    <!-- U <head> dodaj: -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+
+    <style>
+
+    body {
+            background-color:  #f6dac8;
+             margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* ZAGLAVLJE */
+      header {
+      background-color: #fdf1ec /* Svijetla nježna ružičasta */
+      padding: 10px 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-left a,
+    .nav-right a {
+      text-decoration: none;
+      color: #5e4033;
+      margin-right: 20px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .nav-left a:hover {
+      color: #a9746e;
+    }
+
+    .nav-right i {
+      font-size: 30px;
+      margin-left: 10px;
+      color: #5e4033;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .nav-right i:hover {
+      transform: scale(1.2);
+      color: #a9746e;
+    }
+
+        /*S obzirom da slika ide u kompletu sa tekstom iznad*/
+        .video-container {
+        position: relative;
+        width: 400px;
+        margin: 1cm auto 0 auto;
+        display: block;
+    }
+    
+
+    /*Prvi video postavljene postavke*/
+    .main-video {
+    width: 1000px;
+    height: auto;
+    display: block;
+    position: relative;
+    left: -5cm;
+    }   
+
+    /*Uredivanje teksta za pocetak iznad slike*/
+    .overlay-text {
+        position: absolute;
+        top: -70px;              /* iznad slike */
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: 'Great Vibes', cursive;
+        font-size: 140px;         /* jako veliko slovo */
+        -webkit-text-stroke: 1px saddlebrown; 
+        color: #fdf1ec;
+        white-space: nowrap;
+        pointer-events: none;
+        user-select: none;
+        width: max-content;
+        letter-spacing: 3px;      /* razmak između slova da budu "raširena" */
+    }
+
+    /* Stilizovanje blokova za prva dva komada*/
+    .dva-komada {
+    text-align: center;
+    margin-top: 50px;
+    padding: 40px 20px;
+    background-color: #fdf1ec;
+    }
+
+    .dva-komada h2 {
+    font-size: 32px;
+    color: #5e4033;
+    margin-bottom: 30px;
+    }
+
+    .komadi-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    }
+
+    .komad {
+    max-width: 300px;
+    }
+
+    .komad img {
+    width: 100%;
+    height: 300px; /* ili druga visina po izboru */
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .komad p {
+    margin-top: 10px;
+    color: #5e4033;
+    font-size: 16px;
+    line-height: 1.4;
+    }
+
+       /*Uredivanje buttona za placanje*/
+    .kupi-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #5e4033;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    }
+
+    /*DIZAJN ZA KVADRATICE SA BOJAMA IZNAD KOMPLETA*/
+    .color-swatches {
+      display: flex;
+      gap: 8px;
+      margin: 15px 0 5px;
+      justify-content: center;
+    }
+
+    .swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 2px solid transparent;
+      position: relative;
+      cursor: pointer;
+      padding: 0;
+      outline: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .swatch:focus-visible {
+      outline: 2px dashed #5e4033;
+      outline-offset: 2px;
+    }
+
+    .swatch:not([disabled]):hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+
+    .swatch[disabled] {
+      opacity: 0.35;
+      cursor: not-allowed;
+      filter: grayscale(60%);
+    }
+
+    .swatch.selected {
+      border-color: #5e4033;
+      box-shadow: 0 0 0 3px rgba(94,64,51,0.3);
+    }
+
+    /* opcionalno: tooltip za količinu */
+    .swatch[data-stock]:not([disabled])::after {
+      content: attr(data-stock);
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: #5e4033;
+      color: white;
+      font-size: 10px;
+      padding: 2px 4px;
+      border-radius: 50%;
+      line-height: 1;
+    }
+
+    .trenerka {
+      text-align: center;
+      margin-top: 50px;
+      padding: 40px 20px;
+      background-color: #fdf1ec;
+    }
+
+    .trenerka h2 {
+      font-size: 32px;
+      color: #5e4033;
+      margin-bottom: 30px;
+    }
+
+    .trenerka-container {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+
+    /* Sport testimonial sekcija */
+.sport-testimonials {
+  background-color: #fff8f3;
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.sport-testimonials h2 {
+  font-size: 36px;
+  color: #5e4033;
+  margin-bottom: 10px;
+}
+
+.sport-testimonials .subtitle {
+  font-size: 16px;
+  color: #7a5f53;
+  margin-bottom: 40px;
+}
+
+.testimonials-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonial {
+  background: #f6dac8;
+  border: 2px solid #decac1;
+  border-radius: 16px;
+  width: 320px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(94,64,51,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  scroll-margin-top: 80px;
+}
+
+.testimonial .photo-wrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #5e4033;
+  margin-bottom: 15px;
+  flex-shrink: 0;
+}
+
+.testimonial img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.testimonial .quote {
+  font-style: italic;
+  color: #5e4033;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.testimonial .author {
+  font-weight: bold;
+  color: #815e5b;
+  font-size: 14px;
+}
+
+.testimonial:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(94,64,51,0.15);
+}
+
+/* Fade-in animacija (JS će dodati klasu .visible) */
+.testimonial.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .testimonials-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+    </style>
+</head>
+
+<body style="background-color:#f6dac8;">
+        <!-- ZAGLAVLJE (meni + ikone društvenih mreža) -->
+  <header>
+    <nav class="navbar">
+      <!-- Lijeva strana menija -->
+      <div class="nav-left">
+        <a href="#pocetak">Pocetna</a>           <!-- link na vrh stranice -->
+        <a href="#kompleti">Sportski kompleti</a>
+        <a href = "#trenerka">Kompleti trenerki</a>
+        <a href="#sport">Iskustva profesionalnih sportistkinja</a>
+
+      </div>
+
+      <!-- Desna strana: društvene mreže -->
+      <div class="nav-right">
+        <a href="https://www.instagram.com/sumea.klicic/" target="_blank" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/sumea-klicic-31191a260/" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!--video-->
+    <div class="video-container">
+        <video class="main-video" autoplay muted loop playsinline>
+            <source src="sportskiVideoPocetak.mp4" type="video/mp4">
+        </video>
+        <div class="overlay-text" id = "pocetak">Neka udobnost bude prioritet</div>
+    </div>
+
+       <section class="dva-komada" id ="kompleti">
+        <h2>Sportski kompleti</h2>
+        <p>Na početku brenda sportski stil nije bio dostupan kod nas, te takve komade nismo proizvodili. Javila se potreba onda kad nismo uspjeli pronaći za space-between
+            u trgovini ono što nam je potrebno za odrađivanje treinga. Tad smo napravili naša prva dva sportska kompleta koja su i dalje u prodaji i jako su traženi.
+        </p>
+        <div class="komadi-container">
+        <div class="komad">
+        <img src="sportskiKomplet1.jpg" alt="Komad 1">
+
+                <!-- Boje: swatchevi -->
+        <div class="color-swatches" aria-label="Dostupne boje kompleta">
+            <button class="swatch" data-color="crvena" aria-label="Crvena" style="background:#d32f2f;" data-stock="5">
+            <span class="visually-hidden"></span>
+            </button>
+            <button class="swatch" data-color="plava" aria-label="Plava" style="background:#1976d2;" data-stock="0" disabled>
+            <span class="visually-hidden"></span>
+            </button>
+            <button class="swatch" data-color="zelena" aria-label="Zelena" style="background:#388e3c;" data-stock="2">
+            <span class="visually-hidden"></span>
+            </button>
+            <button class="swatch" data-color="crna" aria-label="Crna" style="background:#212121;" data-stock="10">
+            <span class="visually-hidden"></span>
+            </button>
+        </div>
+
+        <a href="placanje.html" class="kupi-button">Kupi odmah</a>
+        <p>Komplet sa tajicama koje su duge. Praktičan je za hladnije dane. Dužina odgovara za cure do 180cm.</p>
+        </div>
+        <div class="komad">
+        <img src="sportskiKomplet2.jpg" alt="Komad 2">
+
+                    <!-- Boje: swatchevi -->
+        <div class="color-swatches" aria-label="Dostupne boje kompleta">
+            <button class="swatch" data-color="crvena" aria-label="Crvena" style="background:#d32f2f;" data-stock="5">
+            <span class="visually-hidden"></span>
+            </button>
+            <button class="swatch" data-color="plava" aria-label="Plava" style="background:#1976d2;" data-stock="3" > <!--broj koji pise gore iznad je 3-->
+            <span class="visually-hidden"></span>
+            </button>
+            <button class="swatch" data-color="zelena" aria-label="Zelena" style="background:#388e3c;" data-stock="0" disabled><!--NA KRAJU disabled govori o tome da je zamuceno-->
+            <span class="visually-hidden"></span>
+            </button>
+            <button class="swatch" data-color="crna" aria-label="Crna" style="background:#212121;" data-stock="1">
+            <span class="visually-hidden"></span>
+            </button>
+        </div>
+
+        <a href="placanje.html" class="kupi-button">Kupi odmah</a>
+        <p>Komplet pogodan za ljetne, tople dane. Tajice su dužine iznad koljena i nije bitna visina cure. </p>
+        </div>
+    </div>
+    </section>
+
+    <section class = "trenerka" id="trenerka">
+      <h2> Kompleti trenerki SUMÉ</h2>
+      <div class="trenerka-container">
+        <div class="komad">
+        <img src="trenerka1.jpg" alt="Trenerka1">
+        <a href="placanje.html" class="kupi-button">Kupi odmah</a>
+        <p>Tamnoplava trenerka pogodna za sportske, ali i casual događaje. Ima blago široke nogavice, te je ugodna za nošenje.</p>
+        </div>
+        <div class="komad">
+        <img src="trenerka2.jpg" alt="trenerka">
+        <a href="placanje.html" class="kupi-button">Kupi odmah</a>
+        <p>Klasična crna trenerka kou žene biraju da nose dok šetaju, trče ili obavljaju kupnju..</p>
+        </div>
+        <div class="komad">
+        <img src="trenerka3.jpg" alt="trenerka">
+        <a href="placanje.html" class="kupi-button">Kupi odmah</a>
+        <p>Pogodna za smjelije koji biraju da budu drugačiji. Bojom mami pažnju, a udobnost je prioritet.</p>
+        </div>
+    </div>
+    </section>
+
+    <!-- SEKCIJA: Profesionalne sportistkinje -->
+<section class="sport-testimonials" id="sport">
+  <h2>Zašto su se one odlučile baš za SUMÉ</h2>
+  <p class="subtitle">Iskustva profesionalnih sportistkinja koje nose naše komade.</p>
+
+  <div class="testimonials-container">
+    <!-- Sportistkinja 1 -->
+    <div class="testimonial">
+      <div class="photo-wrapper">
+        <img src="sportistkinja1.jpg" alt="Sportistkinja 1">
+      </div>
+      <div class="text">
+        <p class="quote">"SUMÉ mi daje slobodu pokreta i osjećam se samouvjereno svaki put kad treniram."</p>
+        <p class="author">- Amina, atletska reprezentativka</p>
+      </div>
+    </div>
+
+      <!-- Sportistkinja 2 -->
+      <div class="testimonial">
+        <div class="photo-wrapper">
+          <img src="sportistkinja2.jpg" alt="Sportistkinja 2">
+        </div>
+        <div class="text">
+          <p class="quote">"Materijali su lagani, a dizajn prati moj ritam. SUMÉ je moj izbor za sve važne mečeve."</p>
+          <p class="author">- Lejla, fitness trenerica</p>
+        </div>
+      </div>
+
+      <!-- Sportistkinja 3 -->
+      <div class="testimonial">
+        <div class="photo-wrapper">
+          <img src="sportistkinja3.jpg" alt="Sportistkinja 3">
+        </div>
+        <div class="text">
+          <p class="quote">"Nije samo odjeća – to je podrška. SUMÉ mi pomaže da se osjećam spremno."</p>
+          <p class="author">- Selma, košarkašica</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+        <script>
+        document.querySelectorAll('.komad').forEach(komad => {
+        const swatches = komad.querySelectorAll('.swatch');
+        const button = komad.querySelector('.kupi-button');
+
+        swatches.forEach(s => {
+            s.addEventListener('click', e => {
+            if (s.disabled) return;
+            // deselect ostalih
+            swatches.forEach(x => x.classList.remove('selected'));
+            s.classList.add('selected');
+
+            const color = s.dataset.color;
+            const stock = parseInt(s.dataset.stock, 10);
+            
+            // npr. možeš dodati info u href ili data atribut
+            button.href = `placanje.html?boja=${encodeURIComponent(color)}`;
+            button.textContent = stock > 0 ? `Kupi odmah (${stock} na stanju)` : 'Nema na stanju';
+            if (stock === 0) {
+                button.classList.add('disabled');
+                button.setAttribute('aria-disabled', 'true');
+                button.style.pointerEvents = 'none';
+                button.style.opacity = '0.6';
+            } else {
+                button.classList.remove('disabled');
+                button.removeAttribute('aria-disabled');
+                button.style.pointerEvents = '';
+                button.style.opacity = '';
+            }
+            });
+        });
+
+        // opcionalno: automatski odaberi prvu dostupnu boju
+        const firstAvailable = Array.from(swatches).find(s => !s.disabled);
+        if (firstAvailable) firstAvailable.click();
+        });
+  </script>
+
+<script>
+// IntersectionObserver za fade-in efekat
+document.addEventListener("DOMContentLoaded", function() {
+  const items = document.querySelectorAll(".testimonial");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  items.forEach(item => observer.observe(item));
+});
+</script>
+
+
+
+</body>
+</html>

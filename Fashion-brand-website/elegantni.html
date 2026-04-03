@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+    <html>
+<head>
+    <meta charset="UTF-8"> 
+    <!-- U <head> dodaj: -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+
+    <style>
+
+    body {
+            background-color:  #f6dac8;
+             margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* ZAGLAVLJE */
+      header {
+      background-color: #fdf1ec /* Svijetla nježna ružičasta */
+      padding: 10px 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-left a,
+    .nav-right a {
+      text-decoration: none;
+      color: #5e4033;
+      margin-right: 20px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .nav-left a:hover {
+      color: #a9746e;
+    }
+
+    .nav-right i {
+      font-size: 30px;
+      margin-left: 10px;
+      color: #5e4033;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .nav-right i:hover {
+      transform: scale(1.2);
+      color: #a9746e;
+    }
+
+        /*S obzirom da slika ide u kompletu sa tekstom iznad*/
+        .video-container {
+        position: relative;
+        width: 400px;
+        margin: 1cm auto 0 auto;
+        display: block;
+    }
+    
+
+    /*Prvi video postavljene postavke*/
+    .main-video {
+    width: 1000px;
+    height: auto;
+    display: block;
+    position: relative;
+    left: -5cm;
+    }   
+
+    /*Uredivanje teksta za pocetak iznad slike*/
+    .overlay-text {
+        position: absolute;
+        top: -70px;              /* iznad slike */
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: 'Great Vibes', cursive;
+        font-size: 140px;         /* jako veliko slovo */
+        -webkit-text-stroke: 1px saddlebrown; 
+        color: #fdf1ec;
+        white-space: nowrap;
+        pointer-events: none;
+        user-select: none;
+        width: max-content;
+        letter-spacing: 3px;      /* razmak između slova da budu "raširena" */
+    }
+
+        .najprodavanije {
+    text-align: center;
+    margin-top: 50px;
+    padding: 40px 20px;
+    background-color: #fdf1ec;
+    }
+
+    .najprodavanije h2 {
+    font-size: 32px;
+    color: #5e4033;
+    margin-bottom: 30px;
+    }
+
+    .najprodavanije-container {
+    display: flex;
+    gap: 50px;
+    flex-wrap: nowrap;          /* sprječava da se spuste u novi red */
+    overflow-x: auto;          /* dozvoljava horizontalno skrolanje ako ne stanu */
+    padding-bottom: 10px;      /* malo prostora ispod za scroll bar */
+    }
+
+    .komad {
+    flex: 0 0 300px;           /* fiksna širina svake kartice */
+    background: #f6dac8;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(94,64,51,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+
+    .komad img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    }
+
+        /*Uredivanje buttona za placanje*/
+    .kupi-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #5e4033;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    }
+
+    .kupi-button:hover {
+        background-color: #a9746e;
+    }
+    
+    .komad p {
+    margin-top: 10px;
+    color: #5e4033;
+    font-size: 16px;
+    line-height: 1.4;
+    }
+    
+    </style>
+</head>
+
+<body style="background-color:#f6dac8;">
+      <!-- ZAGLAVLJE (meni + ikone društvenih mreža) -->
+  <header>
+    <nav class="navbar">
+      <!-- Lijeva strana menija -->
+      <div class="nav-left">
+        <a href="#pocetak">Pocetna</a>           <!-- link na vrh stranice -->
+        <a href="#najprodavanije">Maturalne haljine</a>
+        <a href = "#vjencanice">Vjencanice</a>
+        <a href="#sport">Iskustva profesionalnih sportistkinja</a>
+
+      </div>
+
+      <!-- Desna strana: društvene mreže -->
+      <div class="nav-right">
+        <a href="https://www.instagram.com/sumea.klicic/" target="_blank" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/sumea-klicic-31191a260/" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!--video-->
+    <div class="video-container">
+        <video class="main-video" autoplay muted loop playsinline>
+            <source src="elegantPocetni.mp4" type="video/mp4">
+        </video>
+        <div class="overlay-text" id = "pocetak">Svaki trenutak je pravi da zasijaš</div>
+    </div>
+
+        <section class="najprodavanije" id="najprodavanije">
+    <h2>Najpopularnije maturalne haljine u ponudi</h2>
+    <div class="najprodavanije-container">
+        <div class="komad">
+        <img src="haljineMaturalne2.jpg" alt="Najprodavaniji1">
+        <a href="placanje.html" class="kupi-button">Kupi odmah</a>
+        <p>Nježna, odana, vjerna.</p>
+        </div>
+        <div class="komad">
+        <img src="haljineMaturalne1.jpg" alt="Najprodavanije2">
+        <a href="placanje.html" class="kupi-button">Kupi odmah</a>
+        <p>Elegantna, jednostavna, efektna.</p>
+        </div>
+        <div class="komad">
+        <img src="haljineMaturalne3.jpg" alt="Najprodavanije3">
+        <a href="placanje.html" class="kupi-button">Kupi odmah</a>
+        <p>Drugačija, posebna.</p>
+        </div>
+        <div class="komad">
+        <img src="haljineMaturalne4.jpg" alt="Najprodavanije3">
+        <a href="placanje.html" class="kupi-button">Kupi odmah</a>
+        <p>Visoka elegancija</p>
+        </div>
+    </div>
+    </section>
+
+    <section class="najprodavanije" id="vjencanice">
+    <h2>Najpopularnije vjenčanice</h2>
+    <div class="najprodavanije-container">
+        <div class="komad">
+        <img src="vjencanica1.jpg" alt="Najprodavaniji1">
+        <a href="placanje.html" class="kupi-button">Kupi odmah</a>
+        <p>Nježna, odana, vjerna.</p>
+        </div>
+        <div class="komad">
+        <img src="vjencanica2.jpg" alt="Najprodavanije2">
+        <a href="placanje.html" class="kupi-button">Kupi odmah</a>
+        <p>Elegantna, jednostavna, efektna.</p>
+        </div>
+        <div class="komad">
+        <img src="vjencanica3.jpg" alt="Najprodavanije3">
+        <a href="placanje.html" class="kupi-button">Kupi odmah</a>
+        <p>Drugačija, posebna.</p>
+        </div>
+        <div class="komad">
+        <img src="vjencanica4.jpg" alt="Najprodavanije3">
+        <a href="placanje.html" class="kupi-button">Kupi odmah</a>
+        <p>Visoka elegancija</p>
+        </div>
+    </div>
+    </section>
+    
+</body>
+</html>

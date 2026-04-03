@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <title>Sumea Atelier</title>
+
+  <!-- Font Awesome za društvene mreže (Instagram, LinkedIn) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <head>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<!--Za font naziva brenda-->
+
+  <style>
+    body {
+      background-color: #f6dac8; /* Nježna bež-ružičasta pozadina */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #5e4033;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ----- ZAGLAVLJE (navigacija) ----- */
+    header {
+      background-color: #fdf1ec /* Svijetla nježna ružičasta */
+      padding: 10px 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-left a,
+    .nav-right a {
+      text-decoration: none;
+      color: #5e4033;
+      margin-right: 20px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .nav-left a:hover {
+      color: #a9746e;
+    }
+
+    .nav-right i {
+      font-size: 30px;
+      margin-left: 10px;
+      color: #5e4033;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .nav-right i:hover {
+      transform: scale(1.2);
+      color: #a9746e;
+    }
+
+    h1{
+      color: #815e5b;
+      font-size: 50px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /*UREDIVANJE DIJELA ZA NAZIV STRANICE*/
+    h2 {
+      text-align: center;
+      color: #815e5b;
+      margin: 40px 0 20px 0;
+    }
+
+    /*UREDIVANJE PARAGRAFA TJ TEKSTA ISPOD NASLOVA*/
+    p {
+      font-size: 1.0em;
+      line-height: 1.6;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 20px auto;
+      padding: 0 15px;
+    }
+
+    /* ----- BLOK STILOVA ----- */
+    .stilovi {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .stil {
+      text-align: center;
+    }
+
+    .stil p {
+      font-weight: bold;
+      color: #815e5b;
+      margin-bottom: 10px;
+      font-size: 0.9em;
+    }
+
+    .stil img {
+      width: 250px;
+      height: 300px;
+      object-fit: cover;
+      border: 3px solid #decac1;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .stil img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+
+    /* ----- SEKCIJA: Who We Are ----- */
+    .who-we-are {
+      background-color: #fdf1ec;
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+
+    .team {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .team-member {
+      max-width: 220px;
+      text-align: center;
+    }
+
+    .team-member img {
+      width: 200px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #e2b8a3;
+      margin-bottom: 10px;
+    }
+
+    /* ----- SEKCIJA: Informacije ----- */
+    .info {
+      background-color: #fbeee8;
+      padding: 30px 20px;
+      margin-top: 40px;
+      text-align: center;
+
+    }
+
+    .info img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-top: 15px;
+      border: 2px solid #d4a191;
+    }
+
+    /*STIL ZA TRENDOVE*/
+
+    /* --- Trendovi sekcija --- */
+.trendovi {
+  padding: 40px 20px;
+  background-color: #fff2ec;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.trendovi h2 {
+  color: #815e5b;
+  margin-bottom: 10px;
+}
+
+.trend-slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px 0;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.trend-slider img {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  scroll-snap-align: start;
+  border: 2px solid #decac1;
+  transition: transform 0.3s;
+}
+
+.trend-slider img:hover {
+  transform: scale(1.05);
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- ZAGLAVLJE (meni + ikone društvenih mreža) -->
+  <header>
+    <nav class="navbar">
+      <!-- Lijeva strana menija -->
+      <div class="nav-left">
+        <a href="#home">Pocetna</a>           <!-- link na vrh stranice -->
+        <a href="#trendovi">Trendovi</a> <!--Pomocu ovog mozemo kliknuti na trendovi i dolje je povezano sa id trendovi i tako se pomjeri stranica do dijela gdje treba-->
+        <a href="#who">Ko smo mi</a>      <!-- link na tim -->
+        <a href="#info">Kontakt informacije</a>    <!-- link na kontakt informacije -->
+      </div>
+
+      <!-- Desna strana: društvene mreže -->
+      <div class="nav-right">
+        <a href="https://www.instagram.com/sumea.klicic/" target="_blank" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/sumea-klicic-31191a260/" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- NASLOV I UVODNI TEKST -->
+  <h1 id="home">SUMÉ</h1>
+
+  <!-- STILOVI OBLAČENJA (tri kategorije) -->
+  <div class="stilovi">
+
+    <!-- Casual stil: opuštena, svakodnevna odjeća -->
+    <div class="stil">
+      <p>Casual</p>
+      <a href="casual.html">
+        <img src="casual2.jpg" alt="Casual stil - svakodnevna udobnost">
+      </a>
+    </div>
+
+    <!-- Sportski stil: funkcionalna, aktivna odjeća -->
+    <div class="stil">
+      <p>Sportski</p>
+      <a href="sportski.html">
+        <img src="sportski.jpg" alt="Sportski stil - za aktivne dane">
+      </a>
+    </div>
+
+    <!-- Elegantni stil: svečana, sofisticirana moda -->
+    <div class="stil">
+      <p>Elegantni</p>
+      <a href="elegantni.html">
+        <img src="elegancija.jpg" alt="Elegantni stil - profinjenost i glamur">
+      </a>
+    </div>
+  </div>
+
+  <!--SEKCIJA : TRENDOCI 2025-->
+  <div class="trendovi" id="trendovi"> <!--Pomocu ovog id stavljamo link na to tako da dio mozemo iskoristiti u headeru-->
+  <h2>Trendovi 2025</h2>
+  <p>Pregledajte najnovije modne trendove za ovu sezonu.</p>
+
+  <div class="trend-slider">
+    <img src="trend1.jpg" alt="Trend 1">
+    <img src="trend2.jpg" alt="Trend 2">
+    <img src="trend3.jpg" alt="Trend 3">
+    <img src="trend4.jpg" alt="Trend 4">
+    <img src="trend5.jpg" alt="Trend 5">
+    <img src="trend6.jpg" alt="Trend 6">
+    <img src="trend7.jpg" alt="Trend 7">
+    <img src="trend8.jpg" alt="Trend 8">
+    <img src="trend9.jpg" alt="Trend 9">
+    <img src="trend10.jpg" alt="Trend 10">
+  </div>
+</div>
+
+  <!-- SEKCIJA: KO SMO MI -->
+  <div class="who-we-are" id="who">
+    <h2>Ko smo mi?</h2>
+    <p>Mi smo tim zaljubljenika u modu koji vjeruje da stil ne poznaje granice. Naš cilj je inspirisati, savjetovati i pokazati da moda pripada svima.</p>
+
+    <div class="team">
+      <!-- Prvi član: casual stručnjak -->
+      <div class="team-member">
+        <img src="clan2.jpg" alt="Selma">
+        <p>Selma - Stilistica za casual stil</p>
+      </div>
+
+      <!-- Drugi član: sportski stručnjak -->
+      <div class="team-member">
+        <img src="clan1.jpg" alt="Adna">
+        <p>Adna - Sportska modna savjetnica</p>
+      </div>
+
+      <!-- Treći član: elegancija -->
+      <div class="team-member">
+        <img src="clan3.jpg" alt="Lejla">
+        <p>Lejla - Ekspert za eleganciju</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEKCIJA: INFORMACIJE O AUTORU -->
+  <div class="info" id="info">
+    <h2>Informacije o kreatoru brenda</h2>
+    <p><strong>Ime:</strong> Sumea Kličić</p> <!--strong je da bude podebljano-->
+    <p><strong>Email:</strong> sumeaklicic3052@gmail.com</p>
+    <img src="autor.jpg" alt="Kreator brenda">
+  </div>
+
+</body>
+</html>
